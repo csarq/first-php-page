@@ -23,40 +23,92 @@ curl_close($ch);
 ?>
 
 <head>
-  <title>The next Marvel film</title>
-  <meta name = "description" content="The next Marvel film" />
+  <title>Discover the next Marvel film</title>
+  <meta name = "description" content="Discover the next Marvel film" />
   <meta name = "viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Centered viewport --> 
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
-/>
+
 
 </head>
 
 <main>
-  <pre style="font-size: 10px; overflow: scroll;"><?= var_dump($data); ?></pre>
-    
+<h1>Discover the next Marvel film</h1>    
   <section>
-    <img src="<?= $data["poster_url"]; ?> "width="200" alt="Poster of <?=$data["title"]; ?>"
+    <img src="<?= $data["poster_url"]; ?> "alt="Poster of <?=$data["title"]; ?>"
     style="border-radius: 16px;" />
     
   </section>
 
   <hgroup>
-    <h3><?= $data["title"]; ?> se estrena en <?= $data["days_until"]; ?></h3>
-    <p>Fecha de estreno: <?=$data["release_date"];?> </p>
-    <p>La siguiente es: <?= $data["following_production"] ["title"]; ?> </p>
+    <h3><?= $data["title"]; ?> will be out in <?= $data["days_until"]; ?> days.</h3>
+    <p>Release date: <?=$data["release_date"];?> </p>
+    <p>The following release is: <?= $data["following_production"] ["title"]; ?> </p>
   </hgroup>
 </main>
 
 <style>
-  :root {
-    color-scheme: light dark;
+
+:root {
+  --max-width: 800px; /* Adjust as needed */
+  --main-bg: #f0f0f0;  /* Light background */
+  --dark-bg: #222;    /* Dark background */
+  --text-color: #333;  /* Dark text */
+  --light-text: #f0f0f0; /* Light text */
+}
+
+/* General styles */
+body {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: var(--main-bg); /* Light mode background */
+  color: var(--text-color);           /* Light mode text color */
+}
+
+@media (prefers-color-scheme: dark) { 
+  body {
+    background-color: var(--dark-bg); /* Dark mode background */
+    color: var(--light-text);           /* Dark mode text color */
+  }
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 25px; 
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  main {
+    padding: 20px; 
   }
 
-  body {
-    display: grid;
-    place-content: center;
+  h1 {
+    font-size: 1.8rem; 
   }
+}
+
 </style>
